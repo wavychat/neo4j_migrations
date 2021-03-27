@@ -1,6 +1,6 @@
 {
   "name": "neo4j_migrations",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "wavychat",
   "bin": {
     "neo4j_migrations": "./bin/run"
