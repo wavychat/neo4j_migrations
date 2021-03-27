@@ -42,7 +42,7 @@ export default class UndoLast extends Command {
       let queries = down_queries.split(";");
 
       for (let query of queries) {
-        await session.run(query);
+        if (query.trim()) await session.run(query.trim());
       }
 
       await session.run(

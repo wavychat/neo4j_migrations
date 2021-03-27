@@ -52,7 +52,7 @@ export default class Run extends Command {
         let queries = up_queries.split(";");
 
         for (let query of queries) {
-          await session.run(query);
+          if (query.trim()) await session.run(query.trim());
         }
 
         await session.run(
