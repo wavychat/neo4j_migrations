@@ -40,9 +40,10 @@ export default class Run extends Command {
 
       if (
         JSON.stringify(files.sort()) === JSON.stringify(alreadyMigrated.sort())
-      )
-        return console.log(chalk.green(`✅ No migration to run`));
-
+      ) {
+        driver.close();
+        return console.log(chalk.yellow(`⚠️ No migration to run`));
+      }
       // if a file is not migrated, migrate it
       for (let file of files) {
         if (alreadyMigrated.includes(file)) continue;
