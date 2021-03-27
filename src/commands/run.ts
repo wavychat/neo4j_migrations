@@ -38,6 +38,11 @@ export default class Run extends Command {
 
       const files = await readdirSorted(config.folder);
 
+      if (
+        JSON.stringify(files.sort()) === JSON.stringify(alreadyMigrated.sort())
+      )
+        return console.log(chalk.green(`✅ No migration to run`));
+
       // if a file is not migrated, migrate it
       for (let file of files) {
         if (alreadyMigrated.includes(file)) continue;
