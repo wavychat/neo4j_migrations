@@ -1,7 +1,7 @@
 {
   "name": "@wavychat/neo4j_migrations",
   "private": false,
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": "yoyo1234",
   "bin": {
     "neo4j_migrations": "bin/run"
