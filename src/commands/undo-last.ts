@@ -38,9 +38,13 @@ export default class UndoLast extends Command {
       );
 
       // get functions
-      let [_, down] = data.split("// -- down --");
+      let [_, down_queries] = data.split("// -- down --");
+      let queries = down_queries.split(";");
 
-      await session.run(down);
+      for (let query of queries) {
+        await session.run(query);
+      }
+
       await session.run(
         `MATCH (n:${config.node_label} { 
           file: $file 

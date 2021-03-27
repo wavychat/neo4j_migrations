@@ -48,8 +48,13 @@ export default class Run extends Command {
         );
 
         // get functions
-        let [up] = data.split("// -- down --");
-        await session.run(up);
+        let [up_queries] = data.split("// -- up --");
+        let queries = up_queries.split(";");
+
+        for (let query of queries) {
+          await session.run(query);
+        }
+
         await session.run(
           `CREATE (:${config.node_label} {
           file: $file,
