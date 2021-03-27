@@ -2,7 +2,7 @@
   "name": "@wavychat/neo4j_migrations",
   "description": "Migrate your Neo4j constraints",
   "private": false,
-  "version": "2.6.0",
+  "version": "2.7.0",
   "author": "yoyo1234",
   "bin": {
     "neo4j_migrations": "bin/run"
