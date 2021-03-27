@@ -1,0 +1,51 @@
+# neo4j-migrations
+Migrate your Neo4j constraints
+
+## Configuring
+
+To setup a custom config please create a `neo4j-mig.config.json` file.
+
+In this file you need to specify:
+- the db name (default is `neo4j`) 
+- the db username
+- the db password
+- where to save your migrations (default is `./migrations`)
+- node label of already runned migration in `neo4j`
+
+```json
+{
+    "database": "your_db",
+    "username": "username",
+    "password": "password",
+    "folder": "your folder",
+    "node_label": "your label"
+}
+``` 
+
+## Creating a migration
+
+> npx neo4j-mig create --name User
+
+This will create a `.cql` file under the folder you specified in `neo4j-mig.config.json`.
+
+This file is seperated in 2 parts: 
+- Migrate
+- Undo
+
+Just write the `cypher` code you want to execute on migration under the `# -- migrate --`
+And the code you will execute when reverting the migration under the `# -- undo --`
+
+***Don't remove those comments***
+
+## Running your migrations
+
+> npx neo4j-mig execute
+
+This runs migrations that where not already executed and saves them in neo4j with the label you specified in `neo4j-mig.config.json`.
+
+## Undo migrations
+
+- Undo last:
+    > npx neo4j-mig undo-last
+- Undo all:
+    > npx neo4j-mig undo-all
