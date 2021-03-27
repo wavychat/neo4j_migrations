@@ -40,7 +40,7 @@ export default class Run extends Command {
 
       // if a file is not migrated, migrate it
       for (let file of files) {
-        if (alreadyMigrated.includes(file)) return;
+        if (alreadyMigrated.includes(file)) continue;
 
         const data = await fs.promises.readFile(
           path.join(config.folder, file),
